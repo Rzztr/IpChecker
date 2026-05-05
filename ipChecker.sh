@@ -37,7 +37,7 @@ ping_host(){
 
 abuseIp_Script(){
     local FUENTE=$1
-    API_KEY="7e2dea7a48e4bccbaf8205556fba585cfc16f53a0b487646f4f0e46691026db673c302363d0f0001"
+    API_KEY="HERE_IS_YPUR_KEY"
 
     echo -e "${Y}INICIANDO ANÁLISIS DE REPUTACIÓN...${NC}"
     printf "${B}%-18s | %-7s | %-6s | %-30s${NC}\n" "IP" "SCORE" "PAÍS" "ORGANIZACIÓN"

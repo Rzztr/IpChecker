@@ -16,8 +16,7 @@ show_banner() {
     echo "  ██║     ██║   ██║╚════██║    ╚██╗ ██╔╝██╔══██║██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗██║   ██║╚════██║"
     echo "  ███████╗╚██████╔╝███████║     ╚████╔╝ ██║  ██║╚██████╔╝╚██████╔╝███████╗██║  ██║╚██████╔╝███████║"
     echo "  ╚══════╝ ╚═════╝ ╚══════╝      ╚═══╝  ╚═╝  ╚═╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝"
-    echo -e "                                      IP CHECKER v2.0${NC}"
-    echo -e "${CY}0================================================================================================0${NC}"
+    echo -e "                                      IP CHECKER v3.0${NC}"
 }
 
 exchange(){
@@ -37,7 +36,7 @@ ping_host(){
 
 abuseIp_Script(){
     local FUENTE=$1
-    API_KEY="HERE_IS_YPUR_KEY"
+    API_KEY="7e2dea7a48e4bccbaf8205556fba585cfc16f53a0b487646f4f0e46691026db673c302363d0f0001"
 
     echo -e "${Y}INICIANDO ANÁLISIS DE REPUTACIÓN...${NC}"
     printf "${B}%-18s | %-7s | %-6s | %-30s${NC}\n" "IP" "SCORE" "PAÍS" "ORGANIZACIÓN"
@@ -66,7 +65,6 @@ abuseIp_Script(){
             SCORE=$(echo "$RESPONSE" | jq -r '.data.abuseConfidenceScore' 2>/dev/null)
             [[ "$SCORE" == "null" || -z "$SCORE" ]] && SCORE="0"
             
-            # Definir color por riesgo
             if [ "$SCORE" -gt 50 ]; then S_COL=$R; elif [ "$SCORE" -gt 10 ]; then S_COL=$Y; else S_COL=$G; fi
         else
             SCORE="0"
@@ -89,7 +87,6 @@ whois_data(){
     whois "$1" | grep -E "NetRange|NetName|Organization|RegDate|City|Address" | sed 's/^/  /'
 }
 
-
 if [ -z "$1" ]; then
     set -- "-h"
 fi
@@ -108,17 +105,24 @@ case "$1" in
         exchange
     ;;
     -i|--lista)
-        if [ ! -f "lista_ips.txt" ]; then echo -e "${R}Error: No existe lista_ips.txt${NC}"; exit 1; fi
+        if [ -z "$2" ]; then 
+            echo -e "${R}Error: Debes proporcionar la ruta de un archivo (ej: ./mis_ips.txt)${NC}"
+            exit 1
+        fi
+        if [ ! -f "$2" ]; then 
+            echo -e "${R}Error: El archivo '$2' no existe.${NC}"
+            exit 1
+        fi
         exchange
-        abuseIp_Script "lista_ips.txt"
+        abuseIp_Script "$2"
         exchange
     ;;
     -h|--help|*)
-        echo -e "${Y}Modo de uso:${NC} $0 [opciones] [ip]"
+        echo -e "${Y}Modo de uso:${NC} $0 [opciones] [argumento]"
         echo -e "\nOpciones:"
-        echo -e "  ${G}-g, --generar [IP]${NC}   Analiza una IP, consulta reputación y muestra Whois"
-        echo -e "  ${G}-i, --lista${NC}          Analiza todas las IPs dentro de ${CY}lista_ips.txt${NC}"
-        echo -e "  ${G}-h, --help${NC}           Muestra este menú"
+        echo -e "  ${G}-g, --generar [IP]${NC}       Analiza una IP individual"
+        echo -e "  ${G}-i, --lista [ARCHIVO]${NC}    Analiza IPs desde un archivo de texto"
+        echo -e "  ${G}-h, --help${NC}               Muestra este menú"
         exchange
     ;;
 esac

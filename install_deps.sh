@@ -36,6 +36,10 @@ for tool in curl jq whois; do
     fi
 done
 
+echo -e "\n${GREEN}Instalando en comandos locales......${NC}"
+cp ipChecker.sh /usr/local/bin/ipChecker
+chmod +x /usr/local/bin/ipChecker
+
 # Dar permisos de ejecución al script principal
 if [ -f "ipChecker.sh" ]; then
     chmod +x ipChecker.sh

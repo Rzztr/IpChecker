@@ -6,6 +6,8 @@
 
 Este proyecto es una herramienta desarrollada en Bash (`ipChecker.sh`) que permite analizar direcciones IP para obtener información sobre su reputación y detalles de red. Utiliza la API de AbuseIPDB para consultar el nivel de riesgo de una IP, así como `whois` y `ping` para obtener datos adicionales sobre la organización, el país y la disponibilidad del host.
 
+### Colaboraciones al DM o mail: Ricardo.reyLop@proton.me
+
 ### Requisitos Previos
 
 Para que el script funcione correctamente, asegúrate de tener instaladas las siguientes dependencias en tu sistema:

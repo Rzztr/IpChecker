@@ -44,6 +44,8 @@ chmod +x /usr/local/bin/ipChecker
 if [ -f "ipChecker.sh" ]; then
     chmod +x ipChecker.sh
     echo -e "\n${GREEN}Permisos aplicados a ipChecker.sh${NC}"
+    chmod +x /usr/local/bin/ipChecker
+    echo -e "\n${GREEN}Permisos aplicados a /usr/local/bin/ipChecker${NC}"
 fi
 
 echo -e "\n${GREEN}¡Listo! Ya puedes usar el script.${NC}"

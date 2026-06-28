@@ -24,7 +24,6 @@ if [ -n "$ENV_PATH" ]; then
     done < "$ENV_PATH"
 fi
 
-# Mapeo de respaldo por si en el .env se nombró como API_KEY o ABUSEIPDB_API_KEY
 API_KEY="${ABUSEIPDB_API_KEY:-$API_KEY}"
 
 show_banner() {

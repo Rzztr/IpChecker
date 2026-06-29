@@ -265,7 +265,7 @@ case "$OPCION" in
         exchange
     ;;  
     -h|--help|*)
-        echo -e "${Y}Modo de uso:${NC} $0 [opción] [IPs / archivo] [-o]"
+        echo -e "${Y}Modo de uso:${NC} ipChecker [opción] [IPs / archivo] [-o]"
         echo -e "\nOpciones disponibles:"
         echo -e "  ${G}-g, --generar${NC}  [IP]            Analiza una sola IP (Ping + Reputación + Resumen WHOIS)"
         echo -e "  ${G}-i, --lista${NC}    [IPs/Archivo]   Ver reputación en consola. Agrega ${Y}-o${NC} al final para TXT"
@@ -274,10 +274,10 @@ case "$OPCION" in
         echo -e "  ${G}-cT, --checkTor${NC} [IP]            Lista de IPs de salida de Tor que alcanzan a la IP dada"
         echo -e "  ${G}-h, --help${NC}                    Muestra este menú"
         echo -e "\nEjemplos prácticos:"
-        echo -e "  $0 -g 8.8.8.8"
-        echo -e "  $0 -i 8.8.8.8 1.1.1.1 1.0.0.1"
-        echo -e "  $0 -i lista_ips.txt -o"
-        echo -e "  $0 -w 8.8.8.8 34.19.116.53 -o"
+        echo -e "  ipChecker -g 8.8.8.8"
+        echo -e "  ipChecker -i 8.8.8.8 1.1.1.1 1.0.0.1"
+        echo -e "  ipChecker -i lista_ips.txt -o"
+        echo -e "  ipChecker -w 8.8.8.8 34.19.116.53 -o"
         exchange
     ;;
 esac

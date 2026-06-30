@@ -1,4 +1,6 @@
 
+![IP CHECKER BANNER](image/someImage.png)
+
 ---
 # LEE BIEN ESTE README
 

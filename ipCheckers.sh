@@ -34,7 +34,7 @@ show_banner() {
     echo -e "│   88    88oodD' 8P      88ooo88 88ooooo 8P      88,8P   88ooooo 88oobY'│"
     echo -e "│   88    88~~~   8b      88~~~88 88~~~~~ 8b      88 8b   88~~~~~ 88 8b  │"
     echo -e "│  .88.   88      Y8b  d8 88   88 88.     Y8b  d8 88  88. 88.     88  88.│"
-    echo -e "│Y888888P 88       Y88P' YP    YP Y88888P   Y88P' YP   YD Y88888P 88   YD│"
+    echo -e "│Y888888P 88       Y88P'  YP   YP Y88888P   Y88P' YP   YD Y88888P 88   YD│"
     echo -e "└────────────────────────────────────────────────────────────────────────┘"
 
     echo -e "                             IP CHECKER v4.5${NC}"

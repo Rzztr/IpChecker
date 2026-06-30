@@ -28,13 +28,18 @@ API_KEY="${ABUSEIPDB_API_KEY:-$API_KEY}"
 
 show_banner() {
     echo -e "${Y}"
-    echo "  ██╗      ██████╗ ███████╗    ██╗   ██╗ █████╗  ██████╗ ██╗   ██╗███████╗██████╗  ██████╗ ███████╗"
-    echo "  ██║     ██╔═══██╗██╔════╝    ██║   ██║██╔══██╗██╔═══██╗██║   ██║██╔════╝██╔══██╗██╔═══██╗██╔════╝"
-    echo "  ██║     ██║   ██║███████╗    ██║   ██║███████║██║   ██║██║   ██║█████╗  ██████╔╝██║   ██║███████╗"
-    echo "  ██║     ██║   ██║╚════██║    ╚██╗ ██╔╝██╔══██║██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗██║   ██║╚════██║"
-    echo "  ███████╗╚██████╔╝███████║     ╚████╔╝ ██║  ██║╚██████╔╝╚██████╔╝███████╗██║  ██║╚██████╔╝███████║"
-    echo "  ╚══════╝ ╚═════╝ ╚══════╝      ╚═══╝  ╚═╝  ╚═╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝"
-    echo -e "                                      IP CHECKER v4.5${NC}"
+    echo -e "┌────────────────────────────────────────────────────────────────────────┐"
+    echo -e "│d888888b d8888b.  .o88b. db   db d88888b  .o88b. db   dD d88888b d8888b.│"
+    echo -e "│   88    88   8D d8P  Y8 88   88 88'     d8P  Y8 88 ,8P' 88'     88   8D│"
+    echo -e "│   88    88oodD' 8P      88ooo88 88ooooo 8P      88,8P   88ooooo 88oobY'│"
+    echo -e "│   88    88~~~   8b      88~~~88 88~~~~~ 8b      88 8b   88~~~~~ 88 8b  │"
+    echo -e "│  .88.   88      Y8b  d8 88   88 88.     Y8b  d8 88  88. 88.     88  88.│"
+    echo -e "│Y888888P 88       Y88P' YP    YP Y88888P   Y88P' YP   YD Y88888P 88   YD│"
+    echo -e "└────────────────────────────────────────────────────────────────────────┘"
+
+    echo -e "                             IP CHECKER v4.5${NC}"
+
+    echo -e "${CY}  Autor: Rooster | GitHub: https://github.com/Rzztr | instagram: @rooster.sh${NC}"
 }
 exchange(){
     sleep 0.5
@@ -74,7 +79,6 @@ abuseIp_Script(){
     printf "${B}%-18s | %-7s | %-6s | %-30s${NC}\n" "IP" "SCORE" "PAÍS" "ORGANIZACIÓN"
     echo "--------------------------------------------------------------------------------------------------"
 
-    # Se evita el uso de tuberías directas para prevenir aislamiento de subshell
     while read -r linea || [ -n "$linea" ]; do
         ip=$(echo "$linea" | tr -d '[] -' | xargs)
         
@@ -99,7 +103,6 @@ abuseIp_Script(){
                 NC_L=$NC
             fi
         else
-            # Si no hay API KEY cargada del archivo .env
             SCORE="?"
             S_COL=$Y NC_L=$NC
         fi
@@ -172,7 +175,6 @@ auditoria_whois_completa(){
 
     local contador=0
 
-    # Redirección de proceso avanzada para asegurar que $contador incremente globalmente
     while read -r linea || [ -n "$linea" ]; do
         ip=$(echo "$linea" | tr -d '[] -' | xargs)
 
@@ -206,10 +208,6 @@ auditoria_whois_completa(){
     echo "Total de IPs procesadas: $contador"
 }
 
-# ==========================================
-# 🕹️ CONTROLADORES DE ENTRADA (CASE)
-# ==========================================
-
 OPCION="$1"
 shift
 
@@ -217,12 +215,10 @@ if [ -z "$OPCION" ]; then
     OPCION="-h"
 fi
 
-# Ejecuta show_banner únicamente si la función está declarada en otra parte del entorno
 if declare -f show_banner > /dev/null; then
     show_banner
 fi
 
-# Detectar bandera -o al final de los argumentos para guardar en archivo
 GUARDAR=false
 ARGUMENTOS="$*"
 if [[ "$ARGUMENTOS" =~ \ -o$ ]]; then
@@ -266,6 +262,7 @@ case "$OPCION" in
     ;;  
     -h|--help|*)
         echo -e "${Y}Modo de uso:${NC} ipChecker [opción] [IPs / archivo] [-o]"
+        echo -e "-------------------------------------------------------------"
         echo -e "\nOpciones disponibles:"
         echo -e "  ${G}-g, --generar${NC}  [IP]            Analiza una sola IP (Ping + Reputación + Resumen WHOIS)"
         echo -e "  ${G}-i, --lista${NC}    [IPs/Archivo]   Ver reputación en consola. Agrega ${Y}-o${NC} al final para TXT"
@@ -273,6 +270,7 @@ case "$OPCION" in
         echo -e "  ${G}-isTor, --tor${NC}  [IP]            Verifica si la IP es un nodo de salida de Tor"
         echo -e "  ${G}-cT, --checkTor${NC} [IP]            Lista de IPs de salida de Tor que alcanzan a la IP dada"
         echo -e "  ${G}-h, --help${NC}                    Muestra este menú"
+
         echo -e "\nEjemplos prácticos:"
         echo -e "  ipChecker -g 8.8.8.8"
         echo -e "  ipChecker -i 8.8.8.8 1.1.1.1 1.0.0.1"

@@ -117,4 +117,16 @@ chmod +x ipChecker.sh
 ```
 * **Seguridad:** El archivo `.env` local ya se encuentra agregado al archivo `.gitignore` del repositorio para prevenir que subas accidentalmente tus credenciales privadas a plataformas de control de versiones como GitHub.
 
-# NO NOS HACEMOS RESPONSABLES DEL MAL USO DE ESTE SCRITP, DESDE EL USO DESMEDIDO DE HOST PARA ATAQUES; HASTA EL POTENCIAL USO PARA HACER MISILES NUCLEARES O ATAQUES ALIENIGENAS. NOS RESERVAMOS DE CUALQUIER FIN Y USO QUE PUEDA DARSE BAJO LA IMAGINACION DEL USUARIO.
+---
+
+## No quieres instalar Linux | WSL? 
+
+![IP CHECKER POWERSHELL](image/chadsSayPowershell.png)
+
+Powershell: Se añadio un script powershell en el git, solo navega hasta el directorio en tu terminal Powershell y usa el script de manera normal.
+
+![POWERSHELL TERMINAL]()
+
+---
+
+> NO NOS HACEMOS RESPONSABLES DEL MAL USO DE ESTE       SCRITP, DESDE EL USO DESMEDIDO DE HOST PARA ATAQUES; HASTA EL POTENCIAL USO PARA HACER MISILES NUCLEARES O ATAQUES ALIENIGENAS. NOS RESERVAMOS DE CUALQUIER FIN Y USO QUE PUEDA DARSE BAJO LA IMAGINACION DEL USUARIO.

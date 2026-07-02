@@ -128,6 +128,7 @@ Powershell: Se añadio un script powershell en el git, solo navega hasta el dire
 * En caso de un problema de ejecucion, lo mas seguro es un requerimiento de permisos. Solo EJECUTA COMO ADMINISTRADOR, antes de ejecutar el checker, ejecuta este comando: 
 
 ```bash
+
 powershell -ExecutionPolicy Bypass
 
 ```

@@ -12,7 +12,6 @@ if [ "$EUID" -ne 0 ]; then
   echo -e "${RED}Por favor, ejecuta este script como root o usando sudo.${NC}"
   exit 1
 fi
-
 if command -v apt-get &> /dev/null; then
     echo "Detectado sistema basado en Debian/Ubuntu (apt)..."
     apt-get update -y && apt-get install -y curl jq whois
@@ -47,5 +46,4 @@ if [ -f "ipChecker.sh" ]; then
     chmod +x /usr/local/bin/ipChecker
     echo -e "\n${GREEN}Permisos aplicados a /usr/local/bin/ipChecker${NC}"
 fi
-
 echo -e "\n${GREEN}¡Listo! Ya puedes usar el script.${NC}"
